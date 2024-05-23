@@ -97,17 +97,6 @@ public class LoginControlador {
             e.printStackTrace();
         }
     }
-    public static void closeAllStagesExcept(Stage stageToKeep) {
-        for (Window window : Window.getWindows()) {
-            if (window instanceof Stage) {
-                Stage stage = (Stage) window;
-                if (stage != stageToKeep) {
-                    stage.close();
-                    Cookie.getInstance().setUsuario(null);
 
-                }
-            }
-        }
-    }
 
 }

@@ -1,5 +1,7 @@
 package PCcomponentes.Profile;
 
+import PCcomponentes.Login.Cookie;
+import PCcomponentes.Login.LoginControlador;
 import PCcomponentes.Productos.MYSQL;
 import PCcomponentes.Productos.ProductoClienteControlador;
 import PCcomponentes.Productos.ProductoControlador;
@@ -11,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+
 
 import java.io.IOException;
 
@@ -47,29 +51,32 @@ public class LoginEditarOCerrar {
 
     @FXML
     private void handleCerrar(ActionEvent event) throws IOException {
-        closeProductWindow(event);
+        Stage stage = null;
+        closeAllStagesExcept(stage);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
             Parent root = loader.load();
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    private void closeProductWindow(ActionEvent event) {
-        Node sourceNode = (Node) event.getSource();
-        Stage stage = (Stage) sourceNode.getScene().getWindow();
+     private void closeAllStagesExcept(Stage stageToKeep) {
+        for (Window window : Window.getWindows()) {
+            if (window instanceof Stage) {
+                Stage stage = (Stage) window;
+                if (stage != stageToKeep) {
+                    stage.close();
+                    Cookie.getInstance().setUsuario(null);
 
-        if (productoControlador != null) {
-            productoControlador.closeWindow(sourceNode);
-        } else if (productoClienteControlador != null) {
-            productoClienteControlador.closeWindow(sourceNode);
+                }
+            }
         }
-
-        stage.close();
     }
 
 

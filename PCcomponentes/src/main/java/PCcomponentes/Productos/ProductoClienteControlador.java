@@ -104,10 +104,6 @@ public class ProductoClienteControlador {
             img_id.setImage(new Image(new File(imagePath).toURI().toString()));
         }
     }
-    public void closeWindow(Node node) {
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-    }
 
     private void initializeAccionesColumn() {
         Acciones.setCellFactory(param -> new TableCell<>() {

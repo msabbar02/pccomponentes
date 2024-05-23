@@ -108,10 +108,6 @@ public class ProductoControlador {
             img_id.setImage(new Image(new File(imagePath).toURI().toString()));
         }
     }
-    public void closeWindow(Node node) {
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-    }
 
 
 

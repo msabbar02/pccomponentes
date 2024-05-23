@@ -3,7 +3,7 @@ package PCcomponentes.Profile;
 import PCcomponentes.Productos.MYSQL;
 import PCcomponentes.Productos.ProductoClienteControlador;
 import PCcomponentes.Productos.ProductoControlador;
-import PCcomponentes.Usuario;
+import PCcomponentes.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 import java.io.File;
 import java.io.IOException;
